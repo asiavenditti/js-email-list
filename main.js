@@ -15,32 +15,43 @@ Inserire un bottone che al click faccia il fetch altre 10 mail (sostituendo le a
 
 
 const buttonEl = document.getElementById('btn')
-const ulEl = document.getElementById('email-list')
+let ulEl = document.getElementById('email-list')
 const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail'
 
 
-for (let i = 0; i < 10; i++) {
-
-
-    fetch(endpoint)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-
-            const liEl = document.createElement('li')
-            ulEl.append(liEl)
-            liEl.textContent = data.response
-
-        })
-
-
-        .catch(error => {
-
-            console.log(error);
+const emailGenerator = () => {
 
 
 
-        })
+    for (let i = 0; i < 10; i++) {
 
+        ulEl.innerText = ''
+
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+
+                const liEl = document.createElement('li')
+                ulEl.append(liEl)
+                liEl.textContent = data.response
+
+            })
+
+
+            .catch(error => {
+
+                console.log(error);
+
+
+
+            })
+
+
+    }
 
 }
+
+
+buttonEl.addEventListener('click', emailGenerator)
+
