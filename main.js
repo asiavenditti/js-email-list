@@ -19,17 +19,28 @@ const ulEl = document.getElementById('email-list')
 const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail'
 
 
+for (let i = 0; i < 10; i++) {
 
 
-fetch(endpoint)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    })
+    fetch(endpoint)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
 
-    .catch(error => {
+            const liEl = document.createElement('li')
+            ulEl.append(liEl)
+            liEl.textContent = data.response
 
-        console.log(error);
+        })
 
-    })
 
+        .catch(error => {
+
+            console.log(error);
+
+
+
+        })
+
+
+}
