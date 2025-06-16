@@ -11,6 +11,25 @@ Aggiorna la DOM inserendo gli indirizzi generati in una lista
 Bonus (opzionale)
 Abbellire con CSS o Bootstrap
 Inserire un bottone che al click faccia il fetch altre 10 mail (sostituendo le altre)
-Buon divertimento e confermate lettura come al solito :baby-yoda: */
+ */
 
+
+const buttonEl = document.getElementById('btn')
+const ulEl = document.getElementById('email-list')
+const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail'
+
+
+
+
+fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+    })
 
